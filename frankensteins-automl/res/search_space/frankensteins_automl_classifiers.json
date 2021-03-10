@@ -1,0 +1,559 @@
+{
+    "components": [
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "EnsembleClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "BayesClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "TreeClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "LinearClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "DiscriminantClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "SupportVectorClassifier",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "sklearn.neighbors.KNeighborsClassifier",
+            "providedInterface": ["AbstractClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_neighbors",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 100
+                },
+                {
+                    "name": "p",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 2
+                },
+                {
+                    "name": "weights",
+                    "type": "cat",
+                    "default": "uniform",
+                    "values": ["uniform", "distance"]
+                }
+            ]
+        },
+        {
+            "name": "sklearn.ensemble.AdaBoostClassifier",
+            "providedInterface": ["EnsembleClassifier"],
+            "requiredInterface": [
+                {
+                    "name": "SimpleClassifier",
+                    "construction_key": "base_estimator"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "n_estimators",
+                    "type": "int",
+                    "default": 50,
+                    "min": 50,
+                    "max": 500
+                },
+                {
+                    "name": "learning_rate",
+                    "type": "double",
+                    "default": 0.1,
+                    "min": 0.01,
+                    "max": 2.0
+                },
+                {
+                    "name": "algorithm",
+                    "type": "cat",
+                    "default": "SAMME.R",
+                    "values": ["SAMME.R", "SAMME"]
+                }
+            ]
+        },
+        {
+            "name": "sklearn.ensemble.ExtraTreesClassifier",
+            "providedInterface": ["EnsembleClassifier", "SelectFromModelEstimator"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "criterion",
+                    "type": "cat",
+                    "default": "gini",
+                    "values": ["gini", "entropy"]
+                },
+                {
+                    "name": "max_features",
+                    "type": "double",
+                    "default": 0.5,
+                    "min": 0.0,
+                    "max": 1.0
+                },
+                {
+                    "name": "min_samples_split",
+                    "type": "int",
+                    "default": 2,
+                    "min": 2,
+                    "max": 20
+                },
+                {
+                    "name": "min_samples_leaf",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 20
+                },
+                {
+                    "name": "bootstrap",
+                    "type": "bool",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "name": "sklearn.ensemble.HistGradientBoostingClassifier",
+            "providedInterface": ["EnsembleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "learning_rate",
+                    "type": "double",
+                    "default": 0.1,
+                    "min": 0.01,
+                    "max": 1.0
+                },
+                {
+                    "name": "min_samples_leaf",
+                    "type": "int",
+                    "default": 20,
+                    "min": 1,
+                    "max": 200
+                },
+                {
+                    "name": "max_leaf_nodes",
+                    "type": "int",
+                    "default": 31,
+                    "min": 3,
+                    "max": 2047
+                },
+                {
+                    "name": "l2_regularization",
+                    "type": "double",
+                    "default": 1E-10,
+                    "min": 1E-10,
+                    "max": 1.0
+                },
+                {
+                    "name": "n_iter_no_change",
+                    "type": "int",
+                    "default": 10,
+                    "min": 1,
+                    "max": 20
+                },
+                {
+                    "name": "validation_fraction",
+                    "type": "double",
+                    "default": 0.1,
+                    "min": 0.01,
+                    "max": 0.4
+                }
+            ]
+        },
+        {
+            "name": "sklearn.ensemble.RandomForestClassifier",
+            "providedInterface": ["EnsembleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "criterion",
+                    "type": "cat",
+                    "default": "gini",
+                    "values": ["gini", "entropy"]
+                },
+                {
+                    "name": "max_features",
+                    "type": "double",
+                    "default": 0.5,
+                    "min": 0.0,
+                    "max": 1.0
+                },
+                {
+                    "name": "min_samples_split",
+                    "type": "int",
+                    "default": 2,
+                    "min": 2,
+                    "max": 20
+                },
+                {
+                    "name": "min_samples_leaf",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 20
+                },
+                {
+                    "name": "bootstrap",
+                    "type": "bool",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "name": "sklearn.naive_bayes.BernoulliNB",
+            "providedInterface": ["BayesClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "alpha",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 1e-2,
+                    "max": 100.0
+                },
+                {
+                    "name": "fit_prior",
+                    "type": "bool",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "sklearn.naive_bayes.GaussianNB",
+            "providedInterface": ["BayesClassifier"],
+            "requiredInterface": [],
+            "parameter": []
+        },
+        {
+            "name": "sklearn.naive_bayes.MultinomialNB",
+            "providedInterface": ["BayesClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "alpha",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 1e-2,
+                    "max": 100.0
+                },
+                {
+                    "name": "fit_prior",
+                    "type": "bool",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "sklearn.tree.DecisionTreeClassifier",
+            "providedInterface": ["TreeClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "criterion",
+                    "type": "cat",
+                    "default": "gini",
+                    "values": ["gini", "entropy"]
+                },
+                {
+                    "name": "max_depth",
+                    "type": "int",
+                    "default": 5,
+                    "min": 1,
+                    "max": 64
+                },
+                {
+                    "name": "min_samples_split",
+                    "type": "int",
+                    "default": 2,
+                    "min": 2,
+                    "max": 20
+                },
+                {
+                    "name": "min_samples_leaf",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 20
+                }
+            ]
+        },
+        {
+            "name": "sklearn.linear_model.SGDClassifier",
+            "providedInterface": ["LinearClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "loss",
+                    "type": "cat",
+                    "default": "log",
+                    "values": ["hinge", "log", "modified_huber", "squared_hinge", "perceptron"]
+                },
+                {
+                    "name": "penalty",
+                    "type": "cat",
+                    "default": "l2",
+                    "values": ["l1", "l2", "elasticnet"]
+                },
+                {
+                    "name": "alpha",
+                    "type": "double",
+                    "default": 0.0001,
+                    "min": 1e-7,
+                    "max": 1e-1
+                },
+                {
+                    "name": "l1_ratio",
+                    "type": "double",
+                    "default": 0.15,
+                    "min": 1e-9,
+                    "max": 1.0
+                },
+                {
+                    "name": "tol",
+                    "type": "double",
+                    "default": 1e-4,
+                    "min": 1e-5,
+                    "max": 1e-1
+                },
+                {
+                    "name": "epsilon",
+                    "type": "double",
+                    "default": 1e-4,
+                    "min": 1e-5,
+                    "max": 1e-1
+                },
+                {
+                    "name": "learning_rate",
+                    "type": "cat",
+                    "default": "invscaling",
+                    "values": ["optimal", "invscaling", "constant"]
+                },
+                {
+                    "name": "eta0",
+                    "type": "double",
+                    "default": 0.01,
+                    "min": 1e-7,
+                    "max": 1e-1
+                },
+                {
+                    "name": "power_t",
+                    "type": "double",
+                    "default": 0.5,
+                    "min": 1e-5,
+                    "max": 1.0
+                },
+                {
+                    "name": "average",
+                    "type": "bool",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "name": "sklearn.linear_model.PassiveAggressiveClassifier",
+            "providedInterface": ["LinearClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "C",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 1e-5,
+                    "max": 10.0
+                },
+                {
+                    "name": "loss",
+                    "type": "cat",
+                    "default": "hinge",
+                    "values": ["hinge", "squared_hinge"]
+                },
+                {
+                    "name": "tol",
+                    "type": "double",
+                    "default": 1e-4,
+                    "min": 1e-5,
+                    "max": 1e-1
+                },
+                {
+                    "name": "average",
+                    "type": "bool",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "name": "sklearn.discriminant_analysis.QuadraticDiscriminantAnalysis",
+            "providedInterface": ["DiscriminantClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "reg_param",
+                    "type": "double",
+                    "default": 0.0,
+                    "min": 0.0,
+                    "max": 1.0
+                }
+            ]
+        },
+        {
+            "name": "sklearn.discriminant_analysis.LinearDiscriminantAnalysis",
+            "providedInterface": ["DiscriminantClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "shrinkage",
+                    "type": "double",
+                    "default": 0.5,
+                    "min": 0.0,
+                    "max": 1.0
+                },
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 10,
+                    "min": 1,
+                    "max": 250
+                },
+                {
+                    "name": "tol",
+                    "type": "double",
+                    "default": 1e-4,
+                    "min": 1e-5,
+                    "max": 1e-1
+                }
+            ]
+        },
+        {
+            "name": "sklearn.svm.SVC",
+            "providedInterface": ["SupportVectorClassifier", "SimpleClassifier"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "C",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 0.03125,
+                    "max": 32768
+                },
+                {
+                    "name": "kernel",
+                    "type": "cat",
+                    "default": "rbf",
+                    "values": ["rbf", "poly", "sigmoid"]
+                },
+                {
+                    "name": "degree",
+                    "type": "int",
+                    "default": 3,
+                    "min": 2,
+                    "max": 5
+                },
+                {
+                    "name": "coef0",
+                    "type": "int",
+                    "default": 0,
+                    "min": -1,
+                    "max": 1
+                },
+                {
+                    "name": "shrinking",
+                    "type": "bool",
+                    "default": true
+                },
+                {
+                    "name": "tol",
+                    "type": "double",
+                    "default": 1e-3,
+                    "min": 1e-5,
+                    "max": 1e-1
+                }
+            ]
+        },
+        {
+            "name": "sklearn.svm.LinearSVC",
+            "providedInterface": ["SupportVectorClassifier", "SelectFromModelEstimator"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "C",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 0.03125,
+                    "max": 32768
+                },
+                {
+                    "name": "penalty",
+                    "type": "cat",
+                    "default": "l2",
+                    "values": ["l1", "l2"]
+                },
+                {
+                    "name": "loss",
+                    "type": "cat",
+                    "default": "hinge",
+                    "values": ["hinge", "squared_hinge"]
+                },
+                {
+                    "name": "tol",
+                    "type": "double",
+                    "default": 1e-4,
+                    "min": 1e-5,
+                    "max": 1e-1
+                }
+            ]
+        }
+    ]
+}

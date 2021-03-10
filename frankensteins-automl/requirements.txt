@@ -1,0 +1,9 @@
+black==19.3b0
+liac-arff==2.4.0
+numpy==1.17.3
+pre-commit==1.18.3
+pypubsub==4.0.3
+requests2==2.16.0
+scikit-learn==0.22.1
+smac==0.12.2
+tox==3.14.0

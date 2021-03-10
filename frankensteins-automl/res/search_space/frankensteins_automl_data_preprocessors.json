@@ -1,0 +1,84 @@
+{
+    "components": [
+        {
+            "name": "sklearn.preprocessing.OneHotEncoder",
+            "providedInterface": ["AbstractDataPreProcessor"],
+			"requiredInterface": [],
+			"parameter": []
+        },
+        {
+            "name": "sklearn.feature_selection.VarianceThreshold",
+            "providedInterface": ["AbstractDataPreProcessor"],
+			"requiredInterface": [],
+			"parameter": []
+		},
+        {
+            "name": "sklearn.impute.SimpleImputer",
+            "providedInterface": ["AbstractDataPreProcessor"],
+			"requiredInterface": [],
+			"parameter": [
+                {
+                    "name": "strategy",
+                    "type": "cat",
+                    "default": "mean",
+                    "values": ["mean", "median", "most_frequent", "constant"]
+                }
+            ]
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractDataPreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "DataRescaler",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.StandardScaler",
+            "providedInterface": ["DataRescaler"],
+			"requiredInterface": [],
+			"parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.MinMaxScaler",
+            "providedInterface": ["DataRescaler"],
+			"requiredInterface": [],
+			"parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.RobustScaler",
+            "providedInterface": ["DataRescaler"],
+			"requiredInterface": [],
+			"parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.Normalizer",
+            "providedInterface": ["DataRescaler"],
+			"requiredInterface": [],
+			"parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.QuantileTransformer",
+            "providedInterface": ["DataRescaler"],
+			"requiredInterface": [],
+			"parameter": [
+                {
+                    "name": "n_quantiles",
+                    "type": "int",
+                    "default": 1000,
+                    "min": 10,
+                    "max": 2000
+                },
+                {
+                    "name": "output_distribution",
+                    "type": "cat",
+                    "default": "uniform",
+                    "values": ["uniform", "normal"]
+                }
+            ]
+        }
+    ]
+}

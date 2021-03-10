@@ -1,0 +1,78 @@
+{
+    "components": [
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.build_topology",
+            "providedInterface": ["MLPipeline"],
+			"requiredInterface": [
+				{
+					"name": "Topology",
+					"construction_key": 0
+				}
+			],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["Topology"],
+			"requiredInterface": [
+				{
+					"name": "PreProcessingTopology",
+					"construction_key": 0
+                },
+                {
+					"name": "AbstractClassifier",
+					"construction_key": 1
+                }
+			],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["Topology"],
+			"requiredInterface": [
+                {
+					"name": "AbstractClassifier",
+					"construction_key": 0
+                }
+			],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["PreProcessingTopology"],
+			"requiredInterface": [
+				{
+					"name": "AbstractDataPreProcessor",
+					"construction_key": 0
+                },
+                {
+					"name": "AbstractFeaturePreProcessor",
+					"construction_key": 1
+                }
+			],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["PreProcessingTopology"],
+			"requiredInterface": [
+				{
+					"name": "AbstractDataPreProcessor",
+					"construction_key": 0
+                }
+			],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["PreProcessingTopology"],
+			"requiredInterface": [
+                {
+					"name": "AbstractFeaturePreProcessor",
+					"construction_key": 0
+                }
+			],
+			"parameter": []
+		}
+    ]
+}

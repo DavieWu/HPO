@@ -1,0 +1,417 @@
+{
+    "components": [
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.preprocessor_union",
+            "providedInterface": ["AbstractFeaturePreProcessor"],
+			"requiredInterface": [
+                {
+					"name": "SingleAbstractFeaturePreProcessor",
+					"construction_key": 0
+				},
+				{
+					"name": "SingleAbstractFeaturePreProcessor",
+					"construction_key": 1
+				}
+            ],
+			"parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractFeaturePreProcessor", "SingleAbstractFeaturePreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "DecompositionPreProcessor",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractFeaturePreProcessor", "SingleAbstractFeaturePreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "FeatureSelectionPreProcessor",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractFeaturePreProcessor", "SingleAbstractFeaturePreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "KernelApproximationPreProcessor",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "frankensteins_automl.machine_learning.pipeline.pipeline_constructor.topology_union",
+            "providedInterface": ["AbstractFeaturePreProcessor", "SingleAbstractFeaturePreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "MiscPreProcessor",
+                    "construction_key": 0
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "sklearn.decomposition.TruncatedSVD",
+            "providedInterface": ["DecompositionPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 100,
+                    "min": 2,
+                    "max": 256
+                }
+            ]
+        },
+        {
+            "name": "sklearn.decomposition.FastICA",
+            "providedInterface": ["DecompositionPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 100,
+                    "min": 10,
+                    "max": 2000
+                },
+                {
+                    "name": "algorithm",
+                    "type": "cat",
+                    "default": "parallel",
+                    "values": ["parallel", "deflation"]
+                },
+                {
+                    "name": "whiten",
+                    "type": "bool",
+                    "default": false
+                },
+                {
+                    "name": "fun",
+                    "type": "cat",
+                    "default": "logcosh",
+                    "values": ["logcosh", "exp", "cube"]
+                }
+            ]
+        },
+        {
+            "name": "sklearn.decomposition.PCA",
+            "providedInterface": ["DecompositionPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_components",
+                    "type": "double",
+                    "default": 0.9999,
+                    "min": 0.5,
+                    "max": 0.9999
+                },
+                {
+                    "name": "whiten",
+                    "type": "bool",
+                    "default": false
+                }
+            ]
+        },
+        {
+            "name": "sklearn.decomposition.KernelPCA",
+            "providedInterface": ["DecompositionPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 100,
+                    "min": 10,
+                    "max": 2000
+                },
+                {
+                    "name": "kernel",
+                    "type": "cat",
+                    "default": "rbf",
+                    "values": ["poly", "rbf", "sigmoid", "cosine"]
+                },
+                {
+                    "name": "gamma",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 3.0517578125e-05,
+                    "max": 8.0
+                },
+                {
+                    "name": "degree",
+                    "type": "int",
+                    "default": 3,
+                    "min": 2,
+                    "max": 5
+                },
+                {
+                    "name": "coef0",
+                    "type": "double",
+                    "default": 0,
+                    "min": -1,
+                    "max": 1
+                }
+            ]
+        },
+        {
+            "name": "sklearn.feature_selection.SelectFromModel",
+            "providedInterface": ["FeatureSelectionPreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "SelectFromModelEstimator",
+                    "construction_key": "estimator"
+                }
+            ],
+            "parameter": []
+        },
+        {
+            "name": "sklearn.feature_selection.GenericUnivariateSelect",
+            "providedInterface": ["FeatureSelectionPreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "FeatureSelectionScoreFunction",
+                    "construction_key": "score_func"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "mode",
+                    "type": "cat",
+                    "default": "fpr",
+                    "values": ["fpr", "fdr", "fwe"]
+                },
+                {
+                    "name": "param",
+                    "type": "double",
+                    "default": 0.1,
+                    "min": 0.01,
+                    "max": 0.5
+                }
+            ]
+        },
+        {
+            "name": "sklearn.feature_selection.SelectPercentile",
+            "providedInterface": ["FeatureSelectionPreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "FeatureSelectionScoreFunction",
+                    "construction_key": "score_func"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "percentile",
+                    "type": "int",
+                    "default": 50,
+                    "min": 1,
+                    "max": 99
+                }
+            ]
+        },
+        {
+            "name": "sklearn.feature_selection.chi2",
+            "providedInterface": ["FeatureSelectionScoreFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "sklearn.feature_selection.f_classif",
+            "providedInterface": ["FeatureSelectionScoreFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "sklearn.feature_selection.mutual_info_classif",
+            "providedInterface": ["FeatureSelectionScoreFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "sklearn.kernel_approximation.RBFSampler",
+            "providedInterface": ["KernelApproximationPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "gamma",
+                    "type": "double",
+                    "default": 1.0,
+                    "min": 3.0517578125e-05,
+                    "max": 8.0
+                },
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 100,
+                    "min": 50,
+                    "max": 10000
+                }
+            ]
+        },
+        {
+            "name": "sklearn.kernel_approximation.Nystroem",
+            "providedInterface": ["KernelApproximationPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "gamma",
+                    "type": "double",
+                    "default": 0.1,
+                    "min": 3.0517578125e-05,
+                    "max": 8.0
+                },
+                {
+                    "name": "n_components",
+                    "type": "int",
+                    "default": 100,
+                    "min": 50,
+                    "max": 10000
+                },
+                {
+                    "name": "kernel",
+                    "type": "cat",
+                    "default": "rbf",
+                    "values": ["poly", "rbf", "sigmoid", "cosine", "chi2"]
+                },
+                {
+                    "name": "degree",
+                    "type": "int",
+                    "default": 3,
+                    "min": 2,
+                    "max": 5
+                },
+                {
+                    "name": "coef0",
+                    "type": "double",
+                    "default": 0,
+                    "min": -1,
+                    "max": 1
+                }
+            ]
+        },
+        {
+            "name": "sklearn.cluster.FeatureAgglomeration",
+            "providedInterface": ["MiscPreProcessor"],
+            "requiredInterface": [
+                {
+                    "name": "PoolingFunction",
+                    "construction_key": "pooling_func"
+                }
+            ],
+            "parameter": [
+                {
+                    "name": "n_clusters",
+                    "type": "int",
+                    "default": 25,
+                    "min": 2,
+                    "max": 400
+                },
+                {
+                    "name": "affinity",
+                    "type": "cat",
+                    "default": "euclidean",
+                    "values": ["euclidean", "manhattan", "cosine"]
+                },
+                {
+                    "name": "linkage",
+                    "type": "cat",
+                    "default": "ward",
+                    "values": ["ward", "complete", "average"]
+                }
+            ]
+        },
+        {
+            "name": "numpy.mean",
+            "providedInterface": ["PoolingFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "numpy.median",
+            "providedInterface": ["PoolingFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "numpy.max",
+            "providedInterface": ["PoolingFunction"],
+            "requiredInterface": [],
+            "function_pointer": true,
+            "parameter": []
+        },
+        {
+            "name": "sklearn.preprocessing.PolynomialFeatures",
+            "providedInterface": ["MiscPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "degree",
+                    "type": "int",
+                    "default": 2,
+                    "min": 2,
+                    "max": 3
+                },
+                {
+                    "name": "interaction_only",
+                    "type": "bool",
+                    "default": false
+                },
+                {
+                    "name": "include_bias",
+                    "type": "bool",
+                    "default": true
+                }
+            ]
+        },
+        {
+            "name": "sklearn.ensemble.RandomTreesEmbedding",
+            "providedInterface": ["MiscPreProcessor"],
+            "requiredInterface": [],
+            "parameter": [
+                {
+                    "name": "n_estimators",
+                    "type": "int",
+                    "default": 10,
+                    "min": 10,
+                    "max": 100
+                },
+                {
+                    "name": "max_depth",
+                    "type": "int",
+                    "default": 5,
+                    "min": 2,
+                    "max": 10
+                },
+                {
+                    "name": "min_samples_split",
+                    "type": "int",
+                    "default": 2,
+                    "min": 2,
+                    "max": 20
+                },
+                {
+                    "name": "min_samples_leaf",
+                    "type": "int",
+                    "default": 1,
+                    "min": 1,
+                    "max": 20
+                }
+            ]
+        }
+    ]
+}
